@@ -3,3 +3,22 @@
 .idea
 .DS_Store
 */.DS_Store
+
+#python
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+#java
+*.class
+
+
+#local config
+local.properties
+
+#log files
+*.log
+
