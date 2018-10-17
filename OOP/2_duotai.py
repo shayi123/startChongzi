@@ -33,4 +33,6 @@ print('d is Cat?', isinstance(d, Cat))
 run_twice(c)
 
 print(dir(c))
+# type()
+# isinstance()
 # getattr()、setattr()以及hasattr()
