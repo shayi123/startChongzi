@@ -20,6 +20,3 @@ def get_page(offset, keyword):
         print("connection error!"+e)
         return None
 
-
-def parse_images():
-

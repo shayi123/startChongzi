@@ -1,8 +1,11 @@
 class Student(object):
+    # 属性的名称前加上两个下划线__，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private）
     def __init__(self, name, score):
         self.__name = name
         self.score = score
 
+    # 和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，
+    # 并且，调用时，不用传递该参数
     def get_name(self):
         return self.__name
 

@@ -29,6 +29,7 @@ if __name__ == '__main__':
     print(zhihe)
     print('一种高阶函数--map,接收一个函数和一个序列:map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回')
     r = map(sophistic, [1, 2, 3, 4, 5])
+    print(r)
     print(list(r))
     print('一种高阶函数--reduce：类似于递归：reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)')
     print('因此，传入reduce的函数必须接受两个参数')

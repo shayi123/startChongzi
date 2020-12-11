@@ -7,10 +7,11 @@ def trim(s):
         return s
     for i in range(len(s)):
         if s[i] != ' ':
-            break
+            break    # 不等于空格时，break，跳出循环，得到第一个非空格的位置i
+    # range(start, stop, step)
     for j in range(len(s)-1, -1, -1):
         if s[j] != ' ':
-            break
+            break    # 不等于空格时，break，跳出循环，得到最后一个非空格的位置j
     # 切片：前包后不包
     ss = s[i: j+1]
     return ss
