@@ -13,7 +13,7 @@ out = pd.concat([city, proportion], axis=1)
 print(out)
 print('～～～～上面是原始统计～～～下面是归并其他～～～～')
 # 设置缺省index：全部地市+其他
-arr_default = ['其他', '杭州', '宁波', '温州', '金华', '嘉兴', '绍兴', '衢州', '湖州', '台州', '丽水', '舟山']
+arr_default = ['杭州', '宁波', '温州', '金华', '嘉兴', '绍兴', '衢州', '湖州', '台州', '丽水', '舟山', '其他']
 out.loc['其他'] = 0
 # 不在指定范围的数量累计到其他，如外省投诉
 for x in proportion.index:
@@ -25,15 +25,15 @@ out['比例'] = out['比例'].apply(lambda x: format(x, '.2%'))
 print(out)
 
 # 自定义排序
-custom_order = CategoricalDtype(['杭州', '宁波', '温州', '金华', '嘉兴', '绍兴', '衢州', '湖州', '台州', '丽水', '舟山', '其他'], ordered=True)
-out.index = out.index.astype(custom_order)
-final = out.sort_index()
+# custom_order = CategoricalDtype(['杭州', '宁波', '温州', '金华', '嘉兴', '绍兴', '衢州', '湖州', '台州', '丽水', '舟山', '其他'], ordered=True)
+# out.index = out.index.astype(custom_order)
+# final = out.sort_index()
+final = out
+
 # 输出到csv
-final.to_csv('./out1.csv')
-# print(final)
-# 输出到excel
-# 1、创建文件用于接收数据
-# 2、dataFrame输出到excel
+# final.to_csv('./out1.csv')
+
+# 输出到excel 1、创建文件用于接收数据 2、dataFrame输出到excel
 outwb = openpyxl.Workbook()
 outsheet = outwb.create_sheet(index=0)
 save_path = './out.xlsx'
