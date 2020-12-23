@@ -4,6 +4,7 @@ import openpyxl
 
 # 读取投诉分析表
 file_path = './投诉分析表202011汇总.xlsx'
+last_file = './last month.xlsx'
 data = pd.read_excel(file_path)
 
 # 按照地市统计投诉数量
@@ -23,12 +24,22 @@ out = pd.DataFrame(out, index=arr_default).fillna(0)
 out['个数'] = out['个数'].astype('int32')
 out['比例'] = out['比例'].apply(lambda x: format(x, '.2%'))
 print(out)
+# 添加一列：上个月数据
+last_month = pd.read_excel(last_file)
+last_month.index = last_month['Unnamed: 0'].rename('地市')
+last_month_1 = last_month.drop('Unnamed: 0', axis=1)
+print(last_month_1)
+combine_two_month = pd.concat([out, last_month_1], axis=1)
+# print(combine_two_month)
+combine_two_month['涨幅'] = ((combine_two_month.iloc[:, 0] - combine_two_month.iloc[:, 2])/combine_two_month.iloc[:, 2]). \
+    apply(lambda x: format(x, '.2%'))
+print(combine_two_month)
 
 # 自定义排序
 # custom_order = CategoricalDtype(['杭州', '宁波', '温州', '金华', '嘉兴', '绍兴', '衢州', '湖州', '台州', '丽水', '舟山', '其他'], ordered=True)
 # out.index = out.index.astype(custom_order)
 # final = out.sort_index()
-final = out
+final = combine_two_month
 
 # 输出到csv
 # final.to_csv('./out1.csv')
