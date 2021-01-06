@@ -33,6 +33,7 @@ combine_two_month = pd.concat([out, last_month_1], axis=1)
 # print(combine_two_month)
 combine_two_month['涨幅'] = ((combine_two_month.iloc[:, 0] - combine_two_month.iloc[:, 2])/combine_two_month.iloc[:, 2]). \
     apply(lambda x: format(x, '.2%'))
+combine_two_month.loc['全省'] = [sum(combine_two_month.iloc[:, 0]), 0, 0, 0]
 print(combine_two_month)
 
 # 自定义排序
