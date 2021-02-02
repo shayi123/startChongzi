@@ -6,7 +6,7 @@ if __name__ == '__main__':
     file_guzhang_this_month = 'E:/投诉分析/202101/移动信号直派单20210125-0131.xlsx'
     file_tousu_last_month = 'E:/投诉分析/202101/咨询投诉清单宽表20210118-0124.xlsx'
     file_guzhang_last_month = 'E:/投诉分析/202101/移动信号直派单20210118-0124.xlsx'
-    save_path = './month.xlsx'
+    save_path = './week.xlsx'
     last = '1月18~24'
     this = '1月25~31'
 
