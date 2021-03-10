@@ -33,8 +33,9 @@ print(df2.dtypes)
 # df形状
 print(df2.shape)
 df3 = pd.DataFrame(np.arange(12).reshape(3, 4), index=list("abc"), columns=list("WXYZ"))
+print('@@@@@@@@@@@@@###############$$$$$$$$$$')
 print(df3)
-print(df3["W"])
+print(df3["W", "X"])
 # loc取列
 print(df3.loc[:, "W"])
 # 错误的 print(df3[:, "X"])
@@ -48,4 +49,8 @@ w = df3['W'].values
 print(type(w))
 print(type(df3['W']))
 print(w.max()//3)
-
+df3['Q'] = df3['W'] + df3['X']
+print(df3)
+print('@@@@@@@@@')
+df3.rename({'a': 'rr'}, inplace=True)
+print(df3)

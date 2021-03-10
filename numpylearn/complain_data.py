@@ -2,7 +2,7 @@ import pandas as pd
 from pandas.api.types import CategoricalDtype
 import openpyxl
 
-data2 = pd.read_excel('/Users/shelly/PycharmProjects/startChongzi/numpylearn/sales1.xlsx')
+data2 = pd.read_excel('F:/PycharmProjects/startChongzi/numpylearn/sales1.xlsx')
 # print(data2.describe())
 pay_methods = pd.Series(data2.loc[:, '支付方式'].value_counts(), name='个数')
 print(pay_methods)
@@ -10,6 +10,8 @@ print(pay_methods)
 proportion = pd.Series((pay_methods/pay_methods.sum()), name='比例')
 print(proportion)
 out = pd.concat([pay_methods, proportion], axis=1)
+print(out)
+print(out.index)
 # 设置缺省index：全部地市+其他
 arr_default = ['现金', '支付宝付款码', '微信付款码', '支付宝扫一扫', '其他']
 out.loc['其他'] = 0
@@ -38,6 +40,8 @@ print(multicolumn)
 # multicolumn.to_csv('./multi.csv')
 
 # 自定义排序
+print("############################")
+print(out.index)
 custom_order = CategoricalDtype(['现金', '支付宝付款码', '微信付款码', '支付宝扫一扫', '其他'], ordered=True)
 out.index = out.index.astype(custom_order)
 final = out.sort_index()
@@ -47,7 +51,7 @@ final = out.sort_index()
 # 2、dataFrame输出到excel
 outwb = openpyxl.Workbook()
 outsheet = outwb.create_sheet(index=0)
-save_path = '/Users/shelly/PycharmProjects/startChongzi/numpylearn/out.xlsx'
+save_path = './out.xlsx'
 outwb.save(save_path)
 # selection2.to_excel(save_path, 'Sheet1')
 

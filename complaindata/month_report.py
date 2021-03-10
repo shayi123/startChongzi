@@ -21,8 +21,9 @@ class MonthReport(object):
     def calculate_guzhang(self, key, sheet_name):
         data = pd.read_excel(self.one_month, sheet_name)
         city = pd.Series(data.loc[:, key].value_counts(), name='故障单')
-        # index格式统一
+        # index格式统一 list[start:end:step] '##分公司'变为'##'
         city.index = list(map(lambda x: x[-4::-1][::-1], city.index))
+        # out.index == [city]
         out = pd.DataFrame(city)
         out = self.rank(out, city)
         out['故障单'] = out['故障单'].astype('int32')
@@ -62,4 +63,4 @@ class MonthReport(object):
         outwb = openpyxl.Workbook()
         # outsheet = outwb.create_sheet(index=0)
         outwb.save(save_path)
-        final.to_excel(save_path, 'Sheet1')
+        final.to_excel(save_path, '结果')
